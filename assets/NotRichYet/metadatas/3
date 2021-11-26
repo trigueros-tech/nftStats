@@ -1,0 +1,12 @@
+{
+  "name": "1 Million Target",
+  "description": "Not Rich Yet is a 32 NFT collection of fully compiling solidity codeart trying to say something about work and money... ",
+  "image": "ipfs://QmNxaMKbXQZJjmQqN8CvjrhrY84pg1eS8SDbc2trEfXU1f/1MillionTarget_Red.png",
+  "attributes": [
+    {
+      "trait_type": "Theme",
+      "value": "Red"
+    }
+  ],
+  "compiler": "Hand crafted with love"
+}
