@@ -1,0 +1,35 @@
+{
+  "name": "#2",
+  "description": "Retrowave Artefacts are generative pictures inspired by 80's graphic design culture. They are unique and made of Verceighty's shape vocabulary.",
+  "external_url": "",
+  "image": "1.png",
+  "attributes": [
+    {
+      "trait_type": "Background",
+      "value": "background00012"
+    },
+    {
+      "trait_type": "rectangles",
+      "value": "rectangle27"
+    },
+    {
+      "trait_type": "brush",
+      "value": "brushfront20"
+    },
+    {
+      "trait_type": "points",
+      "value": "points_0007_Groupe-1-copie-11"
+    }
+  ],
+  "properties": {
+    "category": "image",
+    "files": [
+      {
+        "uri": "1.png",
+        "type": "image/png"
+      }
+    ],
+    "creators": []
+  },
+  "compiler": "https://nft-generator.art"
+}
