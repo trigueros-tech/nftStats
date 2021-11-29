@@ -1,29 +1,50 @@
 import fs from "fs"
+import { readFile } from 'fs/promises';
 
 let metadatas = "./assets/Sample2/metadatas/"
 
-const files = fs.readdirSync(metadatas)
-let stats : Map<string, number> = new Map<string, number>()
+async function  main(path : string) {
+  const files = fs.readdirSync(path)
+  let stats = {}
+  let filesHandles = []
+  for (const file of files) {
+    filesHandles.push(
+      readFile(path+"/"+file)
+        .then(function (data) {
 
-for (const file of files) {
-  fs.readFile(metadatas+"/"+file , function (err, data) {
-    if (err) {
-        return console.error(err)
-    } else {
-      metadatas = JSON.parse(data.toString())
-      let name = metadatas["name"];
-      console.log(stats[name])
-      if (stats[name] === undefined) {
-        stats[name] = 1
-      } else {
-        stats[name] += 1
-      }
-      for(let attribute of metadatas["attributes"]) {
-        console.log(attribute["trait_type"] + "->" + attribute["value"])
-      }
+          metadatas = JSON.parse(data.toString())
 
-    }
-    console.log(stats)
-  });
+          for(let attribute of metadatas["attributes"]) {
+            //console.log(attribute["trait_type"] + "->" + attribute["value"])
+
+            if (!stats[attribute["trait_type"]]) {
+              stats[attribute["trait_type"]] = {[attribute["value"]] : 1}
+            } else {
+              if (!stats[attribute["trait_type"]][attribute["value"]]) {
+                stats[attribute["trait_type"]][attribute["value"]] = 1
+              } else {
+                stats[attribute["trait_type"]][attribute["value"]]++
+              }
+            }
+          }
+    }))
+  }
+  await Promise.all(filesHandles)
+
+  //console.log(stats)
+  Object.entries(stats).forEach(([key,value])=>{
+    console.log(key)
+    Object.entries(value as any).forEach(([vkey,vvalue])=>{
+      console.log(vkey + " : " + vvalue)
+    })
+    console.log("")
+  })
 
 }
+
+main(metadatas)
+  .then(() => process.exit(0))
+  .catch((error) => {
+      console.error(error);
+      process.exit(1);
+  });
