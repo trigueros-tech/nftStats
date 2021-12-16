@@ -1,7 +1,7 @@
 import fs from "fs"
 import { readFile } from 'fs/promises';
 
-let metadatas = "./assets/Sample2/metadatas/"
+let metadatasData = "./assets/Sample2/metadatas/"
 
 async function  main(path : string) {
   const files = fs.readdirSync(path)
@@ -12,7 +12,7 @@ async function  main(path : string) {
       readFile(path+"/"+file)
         .then(function (data) {
 
-          metadatas = JSON.parse(data.toString())
+          const metadatas = JSON.parse(data.toString()) as any;
 
           for(let attribute of metadatas["attributes"]) {
             //console.log(attribute["trait_type"] + "->" + attribute["value"])
@@ -42,7 +42,7 @@ async function  main(path : string) {
 
 }
 
-main(metadatas)
+main(metadatasData)
   .then(() => process.exit(0))
   .catch((error) => {
       console.error(error);
