@@ -1,12 +1,11 @@
 import { getDataMethod } from "../infra/get-data";
 import { getNFTStats } from "../business/get-nft-stats";
 import { SourceEnum, Source, SourceBlockchain, SourceFile } from "../types/Source";
-import {toConsole} from "./format";
+import { toConsole } from "./format";
 
 async function main(source: Source) {
 
-    var stats = await getNFTStats(getDataMethod(source))
-
+    var stats = await getNFTStats(getDataMethod(source));
     toConsole(stats);
 }
 
@@ -21,4 +20,4 @@ main(source2)
     .catch((error) => {
         console.error(error);
         process.exit(1);
-    });;
+    });

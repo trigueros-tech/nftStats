@@ -4,10 +4,10 @@
   "description": "",
   "main": "dist/nftStats.js",
   "scripts": {
-    "api": "tsc && node dist/index.js",
-    "console": "tsc && node dist/exposition/main.js",
-    "bk": "tsc && node dist/nftStatFromBlockchain.js",
-    "local": "tsc && node dist/nftStat.js",
+    "api": "nodemon --exec npx ts-node src/index.ts",
+    "console": "nodemon --exec npx ts-node src/exposition/main.ts",
+    "bk": "nodemon --exec npx ts-node src/nftStatFromBlockchain.ts",
+    "local": "nodemon --exec npx ts-node src/nftStat.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
